@@ -1,3 +1,7 @@
+
+/.fleet
+
+*.bat
 # Compiled class file
 *.class
 

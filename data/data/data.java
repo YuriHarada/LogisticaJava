@@ -1,8 +1,9 @@
 package data;
 
-import java.util.*;
 import java.sql.Timestamp;
-import java.text.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 
 public class data {
     Date date = new Date(); 
@@ -36,14 +37,18 @@ public class data {
         return this.nomeOperador;
     }
 
-    //public Date SetDateEntrada() {
-        //Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis())
-        //Transformar ms pra s
-        //return dataDeHoje;
-    //} 
+    public int SetDateEntrada() {
+        int i = (int) (new Date().getTime()/1000);
+        return i;
+    } 
+
+    public int SetDateSaida(){
+        int a = SetDateEntrada();
+        return a + 604800;
+    }
 
     //TODO: fazer funcao de calcular a data de saida
-    //warning: prestar atencao na tipagem do dado 
+    //Warning: prestar atencao na tipagem do dado 
 
 
     public void CadastrarCarga(String conteudoCarga, int qnt){
