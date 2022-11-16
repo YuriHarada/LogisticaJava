@@ -1,6 +1,15 @@
 package Data.core;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
+
+import Data.array;
 
 
 public class DataLog {
@@ -34,14 +43,18 @@ public class DataLog {
         return this.nomeOperador;
     }
 
-    public int SetDateEntrada() {
-        int i = (int) (new Date().getTime()/1000);
-        return i;
-    } 
 
-    public int SetDateSaida(){
-        int a = SetDateEntrada();
-        return a + 604800;
+    public static String SetDateSaida(String string) throws ParseException{
+        SimpleDateFormat date1 =new SimpleDateFormat("dd/MM/yyyy");
+        Date date = date1.parse(string);
+        long a = date.getTime()/ 1000;
+        long b = a + 604800;
+        long c = b * 1000;
+        SimpleDateFormat jdf = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = jdf.format(c);
+        
+        
+        return strDate;
     }
 
     public void CadastrarCarga(String conteudoCarga, int qnt){

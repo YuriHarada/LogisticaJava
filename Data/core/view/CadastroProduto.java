@@ -1,8 +1,11 @@
 package Data.core.view;
 
+import java.text.ParseException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Data.core.DataLog;
 
 public class CadastroProduto extends javax.swing.JDialog {
 
@@ -233,15 +236,22 @@ public class CadastroProduto extends javax.swing.JDialog {
             j.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(j,"Há espaços em branco", "Erro", JOptionPane.WARNING_MESSAGE);
         }else {
-             DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();
-            Object[] dados = {tfNome1.getText(),Quantidade.getText(),Peso.getText(), TelText.getText(), CPF.getText(),DataFor1.getText(), NomeOperador.getText()};
-            dtmProdutos.addRow(dados);
-            this.dispose();
+            String a;
+            try {
+                a = DataLog.SetDateSaida(DataFor1.getText());
+                DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();
+                Object[] dados = {tfNome1.getText(),Quantidade.getText(),Peso.getText(), TelText.getText(), CPF.getText(),DataFor1.getText(), a, NomeOperador.getText()};
+                dtmProdutos.addRow(dados);
+                this.dispose();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
         }
 
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     private void tfNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNome1ActionPerformed
     }//GEN-LAST:event_tfNome1ActionPerformed

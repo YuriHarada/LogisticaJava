@@ -98,7 +98,7 @@ public class ScreenMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome do Produto", "Quantidade", "Peso", "Telefone", "CPF", "Data de Entrada", "Estimativa de Saída"
+                "Nome do Produto", "Quantidade", "Peso", "Telefone", "CPF", "Data de Entrada", "Estimativa de Saída", "Nome do Operador"
             }
         ) {
             boolean[] canEdit = new boolean [] {

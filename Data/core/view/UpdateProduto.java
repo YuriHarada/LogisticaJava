@@ -238,7 +238,7 @@ public class UpdateProduto extends javax.swing.JDialog {
             dtmProdutos.setValueAt(TelText.getText(), jTProdutos.getSelectedRow(), 3);
             dtmProdutos.setValueAt(CPF.getText(), jTProdutos.getSelectedRow(), 4);
             dtmProdutos.setValueAt(DataFor1.getText(), jTProdutos.getSelectedRow(), 5);
-            dtmProdutos.setValueAt(NomeOperador.getText(), jTProdutos.getSelectedRow(), 6);
+            dtmProdutos.setValueAt(NomeOperador.getText(), jTProdutos.getSelectedRow(), 7);
             this.dispose();
         
 
