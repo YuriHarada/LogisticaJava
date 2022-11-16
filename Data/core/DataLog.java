@@ -1,20 +1,17 @@
-package data;
+package Data.core;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class data {
-    Date date = new Date(); 
+public class DataLog {
 
     private int id;
     private double pesoCarga;
     private String nomeOperador;
     private int[] qnt;
     private String[] conteudoCarga;
-    private String origem, destino;
-
+    /* private String origem, destino;
+ */
 
     public int IncrementID(){
         this.id = this.id++;
@@ -46,10 +43,6 @@ public class data {
         int a = SetDateEntrada();
         return a + 604800;
     }
-
-    //TODO: fazer funcao de calcular a data de saida
-    //Warning: prestar atencao na tipagem do dado 
-
 
     public void CadastrarCarga(String conteudoCarga, int qnt){
         IncrementID();

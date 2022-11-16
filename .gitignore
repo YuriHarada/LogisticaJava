@@ -2,6 +2,7 @@
 /.fleet
 
 *.bat
+*.sh
 # Compiled class file
 *.class
 
