@@ -1,5 +1,9 @@
 package Data.core.view;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.ParseException;
 
 import javax.swing.JFrame;
@@ -8,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import Data.core.DataLog;
 
 public class CadastroProduto extends javax.swing.JDialog {
-
+    int c;
     /**
      * Creates new form TelaCadastroCliente
      */
@@ -240,12 +244,14 @@ public class CadastroProduto extends javax.swing.JDialog {
             try {
                 a = DataLog.SetDateSaida(DataFor1.getText());
                 DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();
-                Object[] dados = {tfNome1.getText(),Quantidade.getText(),Peso.getText(), TelText.getText(), CPF.getText(),DataFor1.getText(), a, NomeOperador.getText()};
+                Object[] dados = {DataLog.GetID(), tfNome1.getText(),Quantidade.getText(),Peso.getText(), TelText.getText(), CPF.getText(),DataFor1.getText(), a, NomeOperador.getText()};
                 dtmProdutos.addRow(dados);
                 this.dispose();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
+
 
         }
 

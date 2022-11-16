@@ -1,20 +1,25 @@
 package Data.core.view;
 
 import javax.swing.table.DefaultTableModel;
+
+import Data.core.DataLog;
+
 import static Data.core.view.ScreenMain.jTProdutos;
+
+import java.text.ParseException;
 
 public class UpdateProduto extends javax.swing.JDialog {
 
     public UpdateProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        tfNome1.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 0).toString());
-        Quantidade.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 1).toString());
-        Peso.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 2).toString());
-        TelText.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 3).toString());
-        CPF.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 4).toString());
-        DataFor1.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 5).toString());
-        NomeOperador.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 6).toString());
+        tfNome1.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 1).toString());
+        Quantidade.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 2).toString());
+        Peso.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 3).toString());
+        TelText.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 4).toString());
+        CPF.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 5).toString());
+        DataFor1.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 6).toString());
+        NomeOperador.setText(jTProdutos.getValueAt(jTProdutos.getSelectedRow(), 8).toString());
     }
 
     private void initComponents() {
@@ -228,17 +233,20 @@ public class UpdateProduto extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
             DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();
-            dtmProdutos.setValueAt(tfNome1.getText(), jTProdutos.getSelectedRow(), 0);
-            dtmProdutos.setValueAt(Quantidade.getText(), jTProdutos.getSelectedRow(), 1);
-            dtmProdutos.setValueAt(Peso.getText(), jTProdutos.getSelectedRow(), 2);
-            dtmProdutos.setValueAt(TelText.getText(), jTProdutos.getSelectedRow(), 3);
-            dtmProdutos.setValueAt(CPF.getText(), jTProdutos.getSelectedRow(), 4);
-            dtmProdutos.setValueAt(DataFor1.getText(), jTProdutos.getSelectedRow(), 5);
-            dtmProdutos.setValueAt(NomeOperador.getText(), jTProdutos.getSelectedRow(), 7);
+            try {
+                dtmProdutos.setValueAt(tfNome1.getText(), jTProdutos.getSelectedRow(), 1);
+                dtmProdutos.setValueAt(Quantidade.getText(), jTProdutos.getSelectedRow(), 2);
+                dtmProdutos.setValueAt(Peso.getText(), jTProdutos.getSelectedRow(), 3);
+                dtmProdutos.setValueAt(TelText.getText(), jTProdutos.getSelectedRow(), 4);
+                dtmProdutos.setValueAt(CPF.getText(), jTProdutos.getSelectedRow(), 5);
+                dtmProdutos.setValueAt(DataFor1.getText(), jTProdutos.getSelectedRow(), 6);
+                dtmProdutos.setValueAt(DataLog.SetDateSaida(DataFor1.getText()), jTProdutos.getSelectedRow(), 7);
+                dtmProdutos.setValueAt(NomeOperador.getText(), jTProdutos.getSelectedRow(), 8);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             this.dispose();
         
 

@@ -2,30 +2,48 @@ package Data.core;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.*;
 
-import Data.array;
+import javax.swing.table.DefaultTableModel;
+
+import Data.core.view.ScreenMain;
 
 
 public class DataLog {
 
-    private int id;
+    private static int id;
     private double pesoCarga;
     private String nomeOperador;
     private int[] qnt;
     private String[] conteudoCarga;
     /* private String origem, destino;
  */
-
-    public int IncrementID(){
-        this.id = this.id++;
-        return this.id;
+    
+    public static int GetID(){
+        DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();            
+        if (dtmProdutos.getRowCount() > 0) {
+            return  (Integer) dtmProdutos.getValueAt(dtmProdutos.getRowCount() - 1, 0) + 1;
+        }else {
+            return 1;
+        }
+        
     } 
+
+    public void SetconteudoCarga(String[] conteudoCarga){
+        this.conteudoCarga = conteudoCarga;
+    }
+
+    public String[] GetconteudoCarga(){
+        return this.conteudoCarga;
+    }
+
+    public void Setqnt(int[] qnt){
+        this.qnt = qnt;
+    }
+
+    public int[] Getqnt(){
+        return this.qnt;
+    }
 
     public void SetPesoCarga(double pesoCarga){
         this.pesoCarga = pesoCarga;
@@ -43,7 +61,6 @@ public class DataLog {
         return this.nomeOperador;
     }
 
-
     public static String SetDateSaida(String string) throws ParseException{
         SimpleDateFormat date1 =new SimpleDateFormat("dd/MM/yyyy");
         Date date = date1.parse(string);
@@ -56,13 +73,5 @@ public class DataLog {
         
         return strDate;
     }
-
-    public void CadastrarCarga(String conteudoCarga, int qnt){
-        IncrementID();
-        this.conteudoCarga[this.id] = conteudoCarga;
-        this.qnt[this.id] = qnt;
-    }
-
-
 
 }

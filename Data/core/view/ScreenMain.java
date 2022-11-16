@@ -98,7 +98,7 @@ public class ScreenMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome do Produto", "Quantidade", "Peso", "Telefone", "CPF", "Data de Entrada", "Estimativa de Saída", "Nome do Operador"
+                "Id","Nome do Produto", "Quantidade", "Peso", "Telefone", "CPF", "Data de Entrada", "Estimativa de Saída", "Nome do Operador"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -237,5 +237,5 @@ public class ScreenMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    protected static javax.swing.JTable jTProdutos;
+    public static javax.swing.JTable jTProdutos;
 }
