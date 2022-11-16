@@ -1,28 +1,39 @@
 package Data;
 
-public class array {
-/*     //Inserir Obj String
-    public void Push(String []array){
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import Data.core.view.ScreenMain;
 
+public class Array {
+    static public int front, rear,capacity;
+    static public String[] queue;
+
+
+    public Array()
+    {
+        front = rear = 0;
+        queue = new String[10];
     }
-    //Inserir Obj Int
-    public void PushInt(Int []array){
 
+    public String[] queueEnqueue(String string, int id)
+    {
+        queue[id] = string;
+        return queue;
     }
-    //Remover por ID
-    public void RemoveByID(int ID) {
 
+    public String SearchItem(int id){
+        return queue[id];
     }
-    //Atualizar por ID
-    public void UpdateByID(int ID) {
 
+    private int SearchId4Item(String a, String[] arr) {
+        for(int i = 0; i >= arr.length; i++) {
+            if(arr[i] == a) return i;
+        }
+        return -1;
     }
-    public String[] PullArray(int ID){
-
+    public void remove(int id) {
+        DefaultTableModel dtmProdutos = (DefaultTableModel) Data.core.view.ScreenMain.jTProdutos.getModel();
+        dtmProdutos.removeRow(Data.core.view.ScreenMain.jTProdutos.getSelectedRow());
     }
-    private String[] PullID(String[] array){
-
-    } */
-
 
 }

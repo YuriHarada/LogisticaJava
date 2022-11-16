@@ -1,21 +1,14 @@
 package Data.core.view;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import Data.Array;
 import Data.core.DataLog;
 
 public class CadastroProduto extends javax.swing.JDialog {
     int c;
-    /**
-     * Creates new form TelaCadastroCliente
-     */
     public CadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -244,10 +237,24 @@ public class CadastroProduto extends javax.swing.JDialog {
             try {
                 a = DataLog.SetDateSaida(DataFor1.getText());
                 DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();
-                Object[] dados = {DataLog.GetID(), tfNome1.getText(),Quantidade.getText(),Peso.getText(), TelText.getText(), CPF.getText(),DataFor1.getText(), a, NomeOperador.getText()};
+                Array arrayData = new Array();
+                DataLog k = new DataLog(0, "");
+                String[] dados = new String[8];
+                int o = k.GetID();
+                dados = arrayData.queueEnqueue(String.valueOf(o), 0);
+                dados = arrayData.queueEnqueue(tfNome1.getText(), 1);
+                dados = arrayData.queueEnqueue(Quantidade.getText(), 2);
+                dados = arrayData.queueEnqueue(Peso.getText(), 3);
+                dados = arrayData.queueEnqueue(TelText.getText(), 4);
+                dados = arrayData.queueEnqueue(CPF.getText(), 5);
+                dados = arrayData.queueEnqueue(DataFor1.getText(), 6);
+                dados = arrayData.queueEnqueue(a, 7);
+                dados = arrayData.queueEnqueue(NomeOperador.getText(),8 );
                 dtmProdutos.addRow(dados);
+                System.out.println(new DataLog(o, NomeOperador.getText()));
+                JOptionPane.showMessageDialog(null, new DataLog(o, NomeOperador.getText()));
                 this.dispose();
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 

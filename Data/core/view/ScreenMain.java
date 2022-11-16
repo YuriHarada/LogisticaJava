@@ -2,8 +2,12 @@ package Data.core.view;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+
+import Data.Array;
+import Data.core.DataLog;
 
 public class ScreenMain extends javax.swing.JFrame {
 
@@ -194,7 +198,9 @@ public class ScreenMain extends javax.swing.JFrame {
 
         if(jTProdutos.getSelectedRow() != -1){
             DefaultTableModel dtmProdutos = (DefaultTableModel) jTProdutos.getModel();
-            dtmProdutos.removeRow(jTProdutos.getSelectedRow());
+            Array arrayData = new Array();        
+            DataLog ss = new DataLog(0, "");
+            arrayData.remove(ss.GetID());
         }else{
             JOptionPane.showMessageDialog(null,"Selecione um produto para Excluir", "Erro", JOptionPane.WARNING_MESSAGE);
         }

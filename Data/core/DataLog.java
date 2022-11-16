@@ -10,19 +10,26 @@ import Data.core.view.ScreenMain;
 
 
 public class DataLog {
-
-    private static int id;
+    public int id;
     private double pesoCarga;
     private String nomeOperador;
     private int[] qnt;
     private String[] conteudoCarga;
-    /* private String origem, destino;
- */
+
     
-    public static int GetID(){
+    public DataLog(int idInitial, String nomeOperador) {
+        super();
+        this.id = idInitial;
+        this.nomeOperador = nomeOperador;
+    }
+
+    public Integer GetID(){
         DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();            
         if (dtmProdutos.getRowCount() > 0) {
-            return  (Integer) dtmProdutos.getValueAt(dtmProdutos.getRowCount() - 1, 0) + 1;
+            Object a = dtmProdutos.getValueAt(dtmProdutos.getRowCount() - 1, 0);
+
+            this.id = Integer.parseInt(a.toString());
+            return  this.id + 1;
         }else {
             return 1;
         }
@@ -73,5 +80,9 @@ public class DataLog {
         
         return strDate;
     }
+
+    public String toString(){
+        return "[Log] O(a) " + this.nomeOperador + " registrou o produto do id " + this.id;  
+    }  
 
 }
