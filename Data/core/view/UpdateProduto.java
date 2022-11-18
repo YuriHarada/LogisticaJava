@@ -1,5 +1,7 @@
 package Data.core.view;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import Data.core.DataLog;
@@ -236,14 +238,20 @@ public class UpdateProduto extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
             DefaultTableModel dtmProdutos = (DefaultTableModel) ScreenMain.jTProdutos.getModel();
             try {
-                dtmProdutos.setValueAt(tfNome1.getText(), jTProdutos.getSelectedRow(), 1);
-                dtmProdutos.setValueAt(Quantidade.getText(), jTProdutos.getSelectedRow(), 2);
-                dtmProdutos.setValueAt(Peso.getText(), jTProdutos.getSelectedRow(), 3);
-                dtmProdutos.setValueAt(TelText.getText(), jTProdutos.getSelectedRow(), 4);
-                dtmProdutos.setValueAt(CPF.getText(), jTProdutos.getSelectedRow(), 5);
-                dtmProdutos.setValueAt(DataFor1.getText(), jTProdutos.getSelectedRow(), 6);
-                dtmProdutos.setValueAt(DataLog.SetDateSaida(DataFor1.getText()), jTProdutos.getSelectedRow(), 7);
-                dtmProdutos.setValueAt(NomeOperador.getText(), jTProdutos.getSelectedRow(), 8);
+                if(DataLog.CpfValidation(CPF.getText()) != true) {
+                        JFrame j=new JFrame();
+                        j.setAlwaysOnTop(true);
+                        JOptionPane.showMessageDialog(j,"CPF invalidas", "Erro", JOptionPane.WARNING_MESSAGE);
+                }else {
+                    dtmProdutos.setValueAt(tfNome1.getText(), jTProdutos.getSelectedRow(), 1);
+                    dtmProdutos.setValueAt(Quantidade.getText(), jTProdutos.getSelectedRow(), 2);
+                    dtmProdutos.setValueAt(Peso.getText(), jTProdutos.getSelectedRow(), 3);
+                    dtmProdutos.setValueAt(TelText.getText(), jTProdutos.getSelectedRow(), 4);
+                    dtmProdutos.setValueAt(CPF.getText(), jTProdutos.getSelectedRow(), 5);
+                    dtmProdutos.setValueAt(DataFor1.getText(), jTProdutos.getSelectedRow(), 6);
+                    dtmProdutos.setValueAt(DataLog.SetDateSaida(DataFor1.getText()), jTProdutos.getSelectedRow(), 7);
+                    dtmProdutos.setValueAt(NomeOperador.getText(), jTProdutos.getSelectedRow(), 8);
+                }
             } catch (ParseException e) {
                 e.printStackTrace();
             }

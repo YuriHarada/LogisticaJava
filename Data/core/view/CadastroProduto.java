@@ -82,7 +82,7 @@ public class CadastroProduto extends javax.swing.JDialog {
         Quantidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
 
         try {
-            Peso.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#### Kg")));
+            Peso.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#,##0.0 Kg")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -232,7 +232,11 @@ public class CadastroProduto extends javax.swing.JDialog {
             JFrame j=new JFrame();
             j.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(j,"Há espaços em branco", "Erro", JOptionPane.WARNING_MESSAGE);
-        }else {
+        }else if(DataLog.CpfValidation(CPF.getText()) != true){
+            JFrame j=new JFrame();
+            j.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(j,"CPF invalidas", "Erro", JOptionPane.WARNING_MESSAGE);
+        }else{
             String a;
             try {
                 a = DataLog.SetDateSaida(DataFor1.getText());
